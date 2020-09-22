@@ -28,7 +28,7 @@ RUN apt-get install -f
 RUN rm powershell_7.0.3-1.ubuntu.18.04_amd64.deb
 
 WORKDIR /azp
-COPY ./start.sh .
+COPY ./src/start.sh .
 RUN chmod +x start.sh
 
 CMD ["./start.sh"]
