@@ -20,12 +20,15 @@ RUN apt-get update \
         liblttng-ust0 \
         libssl1.0.0 \
         docker.io \
-        default-jre
+        default-jre \ 
+        zip
 
 RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/powershell_7.0.3-1.ubuntu.18.04_amd64.deb
 RUN dpkg -i powershell_7.0.3-1.ubuntu.18.04_amd64.deb
 RUN apt-get install -f
 RUN rm powershell_7.0.3-1.ubuntu.18.04_amd64.deb
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+RUN npm install -g azure-functions-core-tools@2 --unsafe-perm true
 
 WORKDIR /azp
 COPY ./src/start.sh .
