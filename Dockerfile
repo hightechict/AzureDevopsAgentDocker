@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:lts-ubuntu-18.04
+FROM mcr.microsoft.com/dotnet/sdk:6.0-focal
 
 # To make it easier for build and release pipelines to run apt-get,
 # Configure apt to not require confirmation (assume the -y argument by default)
@@ -26,16 +26,3 @@ COPY ./src/start.sh .
 RUN chmod +x start.sh
 
 CMD ["./start.sh"]
-
-# INSTALL DOCKER
-
-RUN apt-get update \
-&& apt-get install -y --no-install-recommends \
-        docker.io
-
-# INSTALL JAVA and ZIP for our pipeline our own dependencies
-
-RUN apt-get update \
-&& apt-get install -y --no-install-recommends \
-        zip
-
