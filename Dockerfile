@@ -26,3 +26,9 @@ COPY ./src/start.sh .
 RUN chmod +x start.sh
 
 CMD ["./start.sh"]
+
+# INSTALL ZIP
+
+RUN apt-get update \
+&& apt-get install -y --no-install-recommends \
+        zip
